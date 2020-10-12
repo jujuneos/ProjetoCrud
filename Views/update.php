@@ -19,24 +19,40 @@
 	<header>
 		<nav>
 			<div class="nav-wrapper indigo lighten-1">
-				<a href="#" class="brand-logo">Projeto CRUD</a>
+				<a href="#" class="brand-logo">Formulário de inserção</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a href="index.html" class="waves-effect waves-light btn pink accent-2"><i class="material-icons left">arrow_back</i>Página inicial</a></li>
+				</ul>
 			</div>
 		</nav>
 	</header>
 	<h3></h3>
-	<div class="row">
-		<div class="col s2">
-			<a href="formulario.html" class="waves-effect waves-light btn-large pink accent-2"><i class="material-icons left">add_box</i>Inserir cliente</a>
-			<h3></h3>
-			<a href="atualiza.html" class="waves-effect waves-light btn-large pink accent-2"><i class="material-icons left">autorenew</i>Atualizar cliente</a>
-			<h3></h3>
-			<a href="seleciona.html" class="waves-effect waves-light btn-large pink accent-2"><i class="material-icons left">storage</i>Selecionar cliente</a>
-			<h3></h3>
-			<a href="index.html" class="waves-effect waves-light btn-large pink accent-2"><i class="material-icons left">delete</i>Deletar cliente</a>
-			<h3></h3>
-			<a href="lista.php" class="waves-effect waves-light btn-large pink accent-2"><i class="material-icons left">view_list</i>Listar clientes</a>
-		</div>
-	</div>
+	<?php
+
+		include('../Models/dataconfig.php');
+		$id = $_POST['id'];
+		$nome = $_POST['nome'];
+		$email = $_POST['email'];
+		$telefone = $_POST['telefone'];
+
+		try{
+
+			$statement = $pdo->prepare("UPDATE cliente SET nome = :nome, email = :email, telefone = :telefone WHERE id = :id");
+			$statement->execute(array(
+				':nome' => $nome,
+				':email' => $email,
+				':telefone' => $telefone,
+				':id' => $id
+			));
+
+			echo "Dados alterados com sucesso!";
+		}
+
+		catch(PDOException $e){
+			echo "Erro: " . $e->getMessage();
+		}
+
+	?>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>

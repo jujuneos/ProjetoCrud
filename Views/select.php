@@ -19,25 +19,34 @@
 	<header>
 		<nav>
 			<div class="nav-wrapper indigo lighten-1">
-				<a href="#" class="brand-logo">Projeto CRUD</a>
+				<a href="#" class="brand-logo">Clientes selecionados</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a href="index.html" class="waves-effect waves-light btn pink accent-2"><i class="material-icons left">arrow_back</i>Página inicial</a></li>
+				</ul>
 			</div>
 		</nav>
 	</header>
 	<h3></h3>
-	<div class="row">
-		<div class="col s2">
-			<a href="formulario.html" class="waves-effect waves-light btn-large pink accent-2"><i class="material-icons left">add_box</i>Inserir cliente</a>
-			<h3></h3>
-			<a href="atualiza.html" class="waves-effect waves-light btn-large pink accent-2"><i class="material-icons left">autorenew</i>Atualizar cliente</a>
-			<h3></h3>
-			<a href="seleciona.html" class="waves-effect waves-light btn-large pink accent-2"><i class="material-icons left">storage</i>Selecionar cliente</a>
-			<h3></h3>
-			<a href="index.html" class="waves-effect waves-light btn-large pink accent-2"><i class="material-icons left">delete</i>Deletar cliente</a>
-			<h3></h3>
-			<a href="lista.php" class="waves-effect waves-light btn-large pink accent-2"><i class="material-icons left">view_list</i>Listar clientes</a>
-		</div>
-	</div>
+	<?php
+
+		include('../Models/dataconfig.php');
+
+		$nome = $_POST['nome'];
+
+		$statement = $pdo->prepare("SELECT * FROM cliente WHERE nome = :nome");
+		$statement->execute(array(':nome' => $nome));
+
+		echo "<table>";
+		while($ln = $statement->fetchObject()){
+			echo '<tr><td>Id: ' . $ln->id . '</td>';
+			echo '<td>Nome: ' . $ln->nome . '</td>';
+			echo '<td>Email: ' . $ln->email . '</td>';
+			echo '<td>Telefone: ' . $ln->telefone . '</td>';
+		}
+		echo "</table>";
+
+	?>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>
-</html>
+</html>	
