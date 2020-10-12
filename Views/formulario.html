@@ -21,16 +21,21 @@
 			<div class="nav-wrapper indigo lighten-1">
 				<a href="#" class="brand-logo">Formulário de inserção</a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a href="index.html" class="waves-effect waves-light btn pink accent-2"><i class="material-icons left">arrow_back</i>Página inicial</a></li>
+					<li><a href="../Views/index.html" class="waves-effect waves-light btn pink accent-2"><i class="material-icons left">arrow_back</i>Página inicial</a></li>
 				</ul>
 			</div>
 		</nav>
 	</header>
 	<h3></h3>
 	<div class="container formulario">
-		<form method="post" action="../Controllers/insert.php">
+		<form method="post" action="../Controllers/insert.php" >
 			<div class="row">
-				Nome: <input type="text" name="nome">
+				<div class="input-field col s2">
+					Id: <input type="text" name="id">
+				</div>
+				<div class="input-field col s7">
+					Nome: <input type="text" name="nome">
+				</div>
 				<div class="input-field col s6">
 					Email: <input type="text" name="email">
 				</div>
