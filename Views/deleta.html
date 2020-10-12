@@ -13,13 +13,13 @@
     <!--Configura visualização para mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8"/>
       
-    <link rel="stylesheet" href="../Views/styles/style.css"/>
+    <link rel="stylesheet" href="styles/style.css"/>
 </head>
 <body>
 	<header>
 		<nav>
 			<div class="nav-wrapper indigo lighten-1">
-				<a href="#" class="brand-logo">Sucesso!</a>
+				<a href="#" class="brand-logo">Deletar cliente</a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 					<li><a href="../Views/index.html" class="waves-effect waves-light btn pink accent-2"><i class="material-icons left">arrow_back</i>Página inicial</a></li>
 				</ul>
@@ -27,18 +27,16 @@
 		</nav>
 	</header>
 	<h3></h3>
-	<?php
-
-		include('../Models/dataconfig.php');
-
-		$id = $_POST['id'];
-
-		$exclusao = $pdo->prepare("DELETE FROM cliente WHERE id = :id");
-		$exclusao->execute(array(':id' => $id));
-
-		echo "Cliente deletado com sucesso";
-
-	?>
+	<div class="container formulario">
+		<form method="post" action="../Controllers/delete.php" >
+			<div class="row">
+				<div class="input-field col s2">
+					Id do cliente: <input type="text" name="id">
+				</div>
+			</div>
+			<button class="waves-effect waves-light btn pink accent-2" type="submit">Deletar</button>
+		</form>
+	</div>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>
