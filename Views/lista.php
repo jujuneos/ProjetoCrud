@@ -21,7 +21,7 @@
 			<div class="nav-wrapper indigo lighten-1">
 				<a href="#" class="brand-logo">Lista de clientes</a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a href="index.html" class="waves-effect waves-light btn pink accent-2"><i class="material-icons left">arrow_back</i>Página inicial</a></li>
+					<li><a href="index.php" class="waves-effect waves-light btn pink accent-2"><i class="material-icons left">arrow_back</i>Página inicial</a></li>
 				</ul>
 			</div>
 		</nav>

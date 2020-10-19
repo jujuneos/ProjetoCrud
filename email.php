@@ -46,17 +46,23 @@
 		$mail->SMTPAuth = true;
 
 		$mail->CharSet = 'utf-8';
-		$mail->Username = 'luizphpcrud@gmail.com';
-		$mail->Password = '2020@CRud';
+		$mail->Username = 'exemplo@exemplo.com';
+		$mail->Password = 'senha';
 
-		$mail->setFrom('luizphpcrud@gmail.com', 'Luiz Carlos');
-		$mail->addReplyTo('lcjuniorconceicao@gmail.com', 'Luiz Carlos');
-		$mail->addAddress('alberto@simpleshotel.com.br', 'Alberto');
+		/*As três proximas linhas recebem, respectivamente,
+		o e-mail e nome do remetente, e-mail e nome para resposta,
+		e e-mail e nome do destinatário.*/
+		$mail->setFrom('exemplo@exemplo.com', 'Nome do remetente');
+		$mail->addReplyTo('exemplo@exemplo.com', 'Nome do remetente');
+		$mail->addAddress('destino@destino.com', 'Nome do destinatário');
 
+		#Assunto do e-mail
 		$mail->Subject = 'Link do repositório do CRUD feito em PHP para vaga de desenvolvedor Júnior';
 
+		#Caso não consiga pegar o assunto pelo subject, pega a partir da página contents.html
 		$mail->msgHTML(file_get_contents('contents.html'), __DIR__);
 
+		#Corpo do e-mail
 		$mail->AltBody = 'Boa noite! Segue o link do repositório: https://github.com/jujuneos/ProjetoCrud';
 
 		if (!$mail->send()) {
